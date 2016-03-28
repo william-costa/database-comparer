@@ -68,24 +68,33 @@
    <ul>
    <?php
       if(empty($analise['analiseColunasAB'])){
-        echo '<li class="bancoA"><strong>Nenhuma alteração de colunas</strong></li>';
+        echo '<li class="bancoA"><strong>Não há alterações de colunas</strong></li>';
       }else
       foreach($analise['analiseColunasAB'] as $key=>$value){
         echo '<li><strong>'.$key.'</strong><ul>';
 
            echo '<li class="bancoA">Colunas únicas em <strong>Banco A</strong><ul>';
+             if(empty($value['a'])){
+               echo '<li><strong>Não há colunas únicas nesta tabela do Banco A</strong></li>';
+             }else
              foreach($value['a'] as $key2=>$value2){
                echo '<li><strong>'.$key2.'</strong></li>';
              }
            echo '</ul></li>';
 
            echo '<li  class="bancoB">Colunas únicas em <strong>Banco B</strong><ul>';
+             if(empty($value['b'])){
+               echo '<li><strong>Não há colunas únicas nesta tabela do Banco B</strong></li>';
+             }else
              foreach($value['b'] as $key2=>$value2){
                echo '<li><strong>'.$key2.'</strong></li>';
              }
            echo '</ul></li>';
 
            echo '<li>Colunas alteradas<ul>';
+           if(empty($value['dif'])){
+             echo '<li><strong>Não há colunas alteradas nesta tabela</strong></li>';
+           }else
              foreach($value['dif'] as $key2=>$value2){
                echo '<li><strong>'.$key2.'</strong><ul>';
 

@@ -134,7 +134,8 @@ class Funcoes{
     $tabelasB = $this->tabelasB;
 
     //OBTEM SOMENTE AS TABELAS QUE ESTIVEREM NA INTERSECÇÃO DOS DOIS BANCOS
-    $tabelasAB = array_intersect_assoc($tabelasA,$tabelasB);
+    $tabelasAB = array_intersect($tabelasA,$tabelasB);
+
 
     //PRIMEIRO LAÇO PARA ANDAR PELAS TABELAS
     foreach($tabelasAB as $key=>$value){
@@ -176,9 +177,9 @@ class Funcoes{
         }
       }
       //ATRIBUIÇÃO DAS VARIÁVEIS DA CLASSE CASO HAJA ALTERAÇÕES
-      if($mudancas){
-        $this->analiseColunasAB[$value]['a'] = $difCamposAB;
-        $this->analiseColunasAB[$value]['b'] = $difCamposBA;
+      if($mudancas or !empty($difCamposAB) or !empty($difCamposBA)){
+        $this->analiseColunasAB[$value]['a']   = $difCamposAB;
+        $this->analiseColunasAB[$value]['b']   = $difCamposBA;
         $this->analiseColunasAB[$value]['dif'] = $altCamposAB;
         $this->resultadoColunas = false;
       }
