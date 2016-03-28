@@ -107,8 +107,8 @@ class Funcoes{
       $this->tabelasB = $auxB;
 
       //OBTENDO A ANÁLISE DE DIFERENÇAS
-      $resAB = array_diff_assoc($auxA, $auxB);
-      $resBA = array_diff_assoc($auxB, $auxA);
+      $resAB = array_diff($auxA, $auxB);
+      $resBA = array_diff($auxB, $auxA);
 
       //ATRIBUINDO A ANÁLISE ÀS VARIÁVEIS DA CLASSE
       $this->analiseTabelasAB = $resAB;
