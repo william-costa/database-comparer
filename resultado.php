@@ -38,6 +38,8 @@
  <body>
  <h1>Comparador de banco de dados | resultado</h1>
 
+  Banco A: <strong><?=$_POST['bd']['banco'].'</strong>('.$_POST['bd']['servidor'].')'?><br>
+  Banco B: <strong><?=$_POST['bd2']['banco'].'</strong>('.$_POST['bd2']['servidor'].')'?><br>
 
   <fieldset>
     <legend>Tabelas únicas em Banco A</legend>

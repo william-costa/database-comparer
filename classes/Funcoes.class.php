@@ -142,6 +142,8 @@ class Funcoes{
       //AUXILIARES
       $auxA = array();
       $auxB = array();
+      $altCamposAB = array();
+      $mudancas = false;
 
       //EXECUÇÃO DAS QUERIES PARA OBTER OS CAMPOS
       $resA = $obA->execSQL($sql.$value);
@@ -164,20 +166,23 @@ class Funcoes{
       //OBTENDO OS CAMPOS QUE ESTIVEREM NA INTERSECÇÃO DOS DOIS BANCOS
       $camposAB = array_intersect_assoc($auxA,$auxB);
 
+
       //QUARTO LAÇO PARA DESCOBRIR CAMPOS QUE ESTIVEREM DIFERENTES NOS DOIS BANCOS
       foreach($camposAB as $key2=>$value2){
         if($auxA[$key2] != $auxB[$key2]){
           $altCamposAB[$key2]['a'] = $auxA[$key2];
           $altCamposAB[$key2]['b'] = $auxB[$key2];
+          $mudancas = true;
         }
       }
+      //ATRIBUIÇÃO DAS VARIÁVEIS DA CLASSE CASO HAJA ALTERAÇÕES
+      if($mudancas){
+        $this->analiseColunasAB[$value]['a'] = $difCamposAB;
+        $this->analiseColunasAB[$value]['b'] = $difCamposBA;
+        $this->analiseColunasAB[$value]['dif'] = $altCamposAB;
+        $this->resultadoColunas = false;
+      }
 
-      //ATRIBUIÇÃO DAS VARIÁVEIS DA CLASSE
-      $this->analiseColunasAB[$value]['a'] = $difCamposAB;
-      $this->analiseColunasAB[$value]['b'] = $difCamposBA;
-      $this->analiseColunasAB[$value]['dif'] = $altCamposAB;
-
-      if((!empty($difCamposAB)) OR (!empty($difCamposBA)) OR (!empty($altCamposAB))) $this->resultadoColunas = false;
 
     }
 
