@@ -20,12 +20,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="format-detection" http-equiv="Content-Type" content="text/html; charset=utf-8; telephone=no" />
 
+<script src="js/jquery-1-2-12.js"></script>
+<script src="js/scripts.js"></script>
+
 <style>
   html,body{
     font-family:arial;
   }
   fieldset{
       width:300px;
+  }
+  fieldset.bd2 .copiarChaves{
+    float: right;
+    padding: 10px;
+    font-size: 11px;
+    font-weight: bold;
+    color: blue;
+    cursor: pointer;
+  }
+  fieldset.bd2 .copiarChaves:hover{
+    text-decoration: underline;
   }
 </style>
 
@@ -42,8 +56,9 @@
    <input type="text" name="bd[banco]" placeholder="Banco"><br>
  </fieldset>
 
- <fieldset>
+ <fieldset class="bd2">
    <legend>Banco B</legend>
+   <span class="copiarChaves" title="Copia os dados de acesso do Banco A para o Banco B">Copiar chaves do Banco A</span>
    <input type="text" name="bd2[servidor]" placeholder="Servidor"><br>
    <input type="text" name="bd2[usuario]" placeholder="Usuário"><br>
    <input type="password" name="bd2[senha]" placeholder="Senha"><br>
