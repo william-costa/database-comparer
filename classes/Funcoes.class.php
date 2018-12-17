@@ -90,7 +90,7 @@ class Funcoes{
       $data = 'Tables_in_'.$this->bancoA['banco'];
 
       //LAÇO PARA ATRIBUIR OS NOMES DAS TABELAS DO BANCO A AO AUXILIAR A
-      while($lineA = $resA->fetch_object()){
+      while($lineA = $resA->fetchObject()){
         $auxA[] = $lineA->$data;
       }
 
@@ -98,7 +98,7 @@ class Funcoes{
       $data = 'Tables_in_'.$this->bancoB['banco'];
 
       //LAÇO PARA ATRIBUIR OS NOMES DAS TABELAS DO BANCO B AO AUXILIAR B
-      while($lineB = $resB->fetch_object()){
+      while($lineB = $resB->fetchObject()){
         $auxB[] = $lineB->$data;
       }
 
@@ -151,12 +151,12 @@ class Funcoes{
       $resB = $obB->execSQL($sql.$value);
 
       //SEGUNDO LAÇO PARA ATRIBUIR OS CAMPOS DA TABELA DO BANCO A AO AUXILIAR A
-      while($lineA = $resA->fetch_assoc()){
+      while($lineA = $resA->fetch(PDO::FETCH_ASSOC)){
         $auxA[$lineA['Field']] = $lineA;
       }
 
       //TERCEIRO LAÇO PARA ATRIBUIR OS CAMPOS DA TABELA DO BANCO B AO AUXILIAR B
-      while($lineB = $resB->fetch_assoc()){
+      while($lineB = $resB->fetch(PDO::FETCH_ASSOC)){
         $auxB[$lineB['Field']] = $lineB;
       }
 
@@ -183,10 +183,7 @@ class Funcoes{
         $this->analiseColunasAB[$value]['dif'] = $altCamposAB;
         $this->resultadoColunas = false;
       }
-
-
     }
-
   }
 
   //MÉTODO PARA RETORNAR UM ARRAY CONTENDO AS INFORMAÇÕES DA ANÁLISE PARA SEREM EXIBIDAS NO ARQUIVO DE RESULTADO
@@ -219,5 +216,3 @@ class Funcoes{
   }
 
 }
-
- ?>
