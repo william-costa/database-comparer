@@ -167,9 +167,12 @@ class Funcoes{
       //OBTENDO OS CAMPOS QUE ESTIVEREM NA INTERSECÇÃO DOS DOIS BANCOS
       $camposAB = array_intersect_assoc($auxA,$auxB);
 
+      //VALORES DEFAULT TIMESTAMP
+      $valoresDefaultTimestamp = ['CURRENT_TIMESTAMP','current_timestamp()'];
 
       //QUARTO LAÇO PARA DESCOBRIR CAMPOS QUE ESTIVEREM DIFERENTES NOS DOIS BANCOS
       foreach($camposAB as $key2=>$value2){
+        if(in_array($auxA[$key2]['Default'],$valoresDefaultTimestamp) and in_array($auxB[$key2]['Default'],$valoresDefaultTimestamp)) continue;
         if($auxA[$key2] != $auxB[$key2]){
           $altCamposAB[$key2]['a'] = $auxA[$key2];
           $altCamposAB[$key2]['b'] = $auxB[$key2];
