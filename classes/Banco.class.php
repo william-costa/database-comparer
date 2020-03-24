@@ -13,7 +13,7 @@
 class Banco {
   // conexao sera compartilhada entre todas as instâncias
   public $conexao;
-  
+
   /*
    * Método construtor
    * Se conexão não existir, cria, senão, nada a fazer (reutiliza a criada por outra
@@ -23,8 +23,8 @@ class Banco {
     global $bdconfig;
     if (!$this->conexao instanceOf \PDO) {
       try {
-        $dsn = 'mysql:host='.$bdconfig['servidor'].';dbname='.$bdconfig['banco'].';charset=utf8';
-
+        $porta = !empty($bdconfig['porta']) ? ';port='.$bdconfig['porta'] : '';
+        $dsn = 'mysql:host='.$bdconfig['servidor'].';dbname='.$bdconfig['banco'].$porta.';charset=utf8';
         $options = [
           PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
           PDO::ATTR_PERSISTENT => true
@@ -59,7 +59,7 @@ class Banco {
     } else {
 
       global $debugBancoMostraErro;
-      
+
       if ($debugBancoMostraErro) {
         echo $this->conexao->error;
       } else {

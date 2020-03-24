@@ -50,7 +50,8 @@
 
  <fieldset>
    <legend>Banco A</legend>
-   <input type="text" name="bd[servidor]" placeholder="Servidor"><br>
+   <input type="text" name="bd[servidor]" placeholder="Servidor" value="localhost"><br>
+   <input type="text" name="bd[porta]" placeholder="Porta" value="3306"><br>
    <input type="text" name="bd[usuario]" placeholder="Usuário"><br>
    <input type="password" name="bd[senha]" placeholder="Senha"><br>
    <input type="text" name="bd[banco]" placeholder="Banco"><br>
@@ -59,7 +60,8 @@
  <fieldset class="bd2">
    <legend>Banco B</legend>
    <span class="copiarChaves" title="Copia os dados de acesso do Banco A para o Banco B">Copiar chaves do Banco A</span>
-   <input type="text" name="bd2[servidor]" placeholder="Servidor"><br>
+   <input type="text" name="bd2[servidor]" placeholder="Servidor" value="localhost"><br>
+   <input type="text" name="bd2[porta]" placeholder="Porta" value="3306"><br>
    <input type="text" name="bd2[usuario]" placeholder="Usuário"><br>
    <input type="password" name="bd2[senha]" placeholder="Senha"><br>
    <input type="text" name="bd2[banco]" placeholder="Banco"><br>
