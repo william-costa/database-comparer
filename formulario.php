@@ -20,11 +20,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="format-detection" http-equiv="Content-Type" content="text/html; charset=utf-8; telephone=no" />
   <link rel="icon" type="image/png" href="favicon.ico">
-  <!-- BOOTSTRAP CSS -->
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
-  
 
   <style>
     html,
@@ -56,8 +54,11 @@
     .btn-container button{
       margin: 0 2px 0 2px;
     }
-    .alert, .send-button{
+    .send-button{
       width: 400px;
+    }
+    .alert{
+      width: 100%;
     }
     .content{
       width: 800px;
@@ -125,125 +126,7 @@
     </form>
   </div>
   <script src="js/jquery-1-2-12.js"></script>
-  <script src="js/scripts.js"></script>
-  <!-- BOOTSTRAP JS -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
-  <script>
-    $(".copiarChaves").click(function(){
-      var servidor = $('input[name="bd[servidor]"]').val();
-      var usuario  = $('input[name="bd[usuario]"]').val();
-      var porta    = $('input[name="bd[porta]"]').val();
-      var senha    = $('input[name="bd[senha]"]').val();
-
-      $('input[name="bd2[servidor]"]').val(servidor);
-      $('input[name="bd2[porta]"]').val(porta);
-      $('input[name="bd2[usuario]"]').val(usuario);
-      $('input[name="bd2[senha]"]').val(senha);
-    });
-
-    $("#salvar-favorito").click((e)=>{
-      e.preventDefault();
-      let continueTest = true;
-      if($('input[name="bd[servidor]"]').val().trim() == ""){
-        alertBox("Campo Servidor em branco","warning",4000);
-        continueTest = false;
-      }
-      if($('input[name="bd[porta]"]').val().trim() == ""){
-        alertBox("Campo Porta em branco","warning",4000);
-        continueTest = false;
-      }
-      if($('input[name="bd[senha]"]').val().trim() == ""){
-        alertBox("Campo Senha em branco","warning",4000);
-        continueTest = false;
-      }
-      if($('input[name="bd[banco]"]').val().trim() == ""){
-        alertBox("Campo Banco em branco","warning",4000);
-        continueTest = false;
-      }
-      if(continueTest){
-        $.ajax({
-          url: "<?= dirname(".") ?>",
-          type:"POST",
-          data:{
-            salvar:"true",
-            host: $('input[name="bd[servidor]"]').val(),
-            port: $('input[name="bd[porta]"]').val(),
-            user: $('input[name="bd[usuario]"]').val(),
-            password: $('input[name="bd[senha]"]').val(),
-            database: $('input[name="bd[banco]"]').val(),
-          },        
-          success:function(data){
-            alertBox("Favorito salvo com sucesso!</a>","success");
-          },
-          error:function(data){
-            alertBox("Não foi possível gravar o favorito. Tente liberar permissão na pasta do comparador <a href= class='alert-link'>sudo chmod -R 777</a>","danger");
-          }
-        });
-      }
-      
-    })
-    $("#carregar-favorito").click((e)=>{
-      e.preventDefault();
-      $.ajax({
-        url: "<?= dirname(".") ?>",
-        type:"POST",
-        data:{carregar:"true"},
-        success:function(data){
-          data = JSON.parse(data);
-          if(data.host == "" && data.port == "" && data.user == "" && data.password == "" && data.database == ""){
-            alertBox("Registro não encontrado. Use o botão Salvar para cirar um novo registro","danger");
-          }else{
-            $('input[name="bd[servidor]"]').val(data.host);
-            $('input[name="bd[porta]"]').val(data.port);
-            $('input[name="bd[usuario]"]').val(data.user);
-            $('input[name="bd[senha]"]').val(data.password);
-            $('input[name="bd[banco]"]').val(data.database);
-          }
-        }
-      });
-    })
-
-    $("#limpar-campos").click((e)=>{
-      e.preventDefault();
-      $('input[name="bd[servidor]"]').val("");
-      $('input[name="bd[porta]"]').val("");
-      $('input[name="bd[usuario]"]').val("");
-      $('input[name="bd[senha]"]').val("");
-      $('input[name="bd[banco]"]').val("");
-    })
-
-    $("#limpar-campos2").click((e)=>{
-      e.preventDefault();
-      $('input[name="bd2[servidor]"]').val("");
-      $('input[name="bd2[porta]"]').val("");
-      $('input[name="bd2[usuario]"]').val("");
-      $('input[name="bd2[senha]"]').val("");
-      $('input[name="bd2[banco]"]').val("");
-    })
-
-
-    function alertBox(message,type,delayTime = 2000,fadeOutTime = 1000){
-      let continueTest = true;
-      $(".alert").map((inde,alertBoxElement)=>{
-        if(alertBoxElement.innerText == message + "\n×"){
-          continueTest = false;
-        }
-      })
-      if(continueTest){
-        let alertHtmlBox = document.createElement("div");
-        alertHtmlBox.innerHTML += message;
-        alertHtmlBox.innerHTML += `
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>`;
-        alertHtmlBox.classList.add("alert");
-        alertHtmlBox.classList.add("alert-" + type);
-        $(alertHtmlBox).delay(delayTime).fadeOut(fadeOutTime,function(){
-          $(alertHtmlBox).remove();
-        });
-        $("h1").after(alertHtmlBox);
-      }
-    }
-  </script>
+  <script src="js/scripts.js"></script>
 </body>
