@@ -1,0 +1,27 @@
+html, body {
+    font-family: arial;
+}
+
+fieldset {
+    width: 400px;
+}
+
+.bancoA {
+    color: #27ae60;
+}
+
+.bancoB {
+    color: #c0392b;
+}
+
+.card {
+    width: 900px;
+    margin-bottom: 20px;
+}
+
+.content {
+    width: 900px;
+    margin: auto;
+    padding: 50px;
+    align-content: center;
+}

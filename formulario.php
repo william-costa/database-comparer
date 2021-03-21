@@ -23,53 +23,7 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
-  <style>
-    html,
-    body {
-      font-family: arial;
-    }
-
-    fieldset {
-      width: 300px;
-    }
-
-    fieldset.bd2 .copiarChaves {
-      float: right;
-      padding: 10px;
-      font-size: 11px;
-      font-weight: bold;
-      color: blue;
-      cursor: pointer;
-    }
-    fieldset.bd2 .copiarChaves:hover {
-      text-decoration: underline;
-    }
-    .card-custom{
-      width: 400px;
-    }    
-    .btn-container{
-      padding: 10px 0 0 0;
-    }
-    .btn-container button{
-      margin: 0 2px 0 2px;
-    }
-    .send-button{
-      width: 400px;
-    }
-    .alert{
-      width: 100%;
-    }
-    .content{
-      width: 800px;
-      margin: auto;
-      text-align: center;
-      align-content: center;
-    }
-    .content form{
-      display: inline-block;
-    }
-  </style>
+  <link rel="stylesheet" href="css/formulario.css">
 
 </head>
 
