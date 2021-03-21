@@ -75,7 +75,7 @@
       </div>
       <br>
       <div class="send-button">
-        <button class="btn btn-primary btn-block" type="button">Comparar</button>
+        <button class="btn btn-primary btn-block" type="submit">Comparar</button>
       </div>
     </form>
   </div>
