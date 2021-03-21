@@ -21,10 +21,6 @@ $("#salvar-favorito").click((e) => {
 		alertBox("Campo Porta em branco", "warning", 4000);
 		continueTest = false;
 	}
-	if ($('input[name="bd[senha]"]').val().trim() == "") {
-		alertBox("Campo Senha em branco", "warning", 4000);
-		continueTest = false;
-	}
 	if ($('input[name="bd[banco]"]').val().trim() == "") {
 		alertBox("Campo Banco em branco", "warning", 4000);
 		continueTest = false;
