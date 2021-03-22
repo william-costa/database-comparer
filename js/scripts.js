@@ -41,7 +41,7 @@ $("#salvar-favorito").click((e) => {
 				alertBox("Favorito salvo com sucesso!</a>", "success");
 			},
 			error: function (data) {
-				alertBox("Não foi possível gravar o favorito. Tente liberar permissão na pasta do comparador <a href= class='alert-link'>sudo chmod -R 777</a>", "danger");
+				alertBox("Não foi possível gravar o favorito. Tente liberar permissão na pasta do comparador <br><a href= class='alert-link'>sudo chmod -R 777 database-comparer</a>", "danger",5000);
 			}
 		});
 	}

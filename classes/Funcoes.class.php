@@ -228,19 +228,18 @@ class Funcoes{
     echo json_encode($data);
   }
   public static function setArquivo($host, $port, $user, $password, $database){
-    try{
-      $fp = fopen("config/favorite.txt", 'w');
-      fwrite($fp, $host     . "\n"); // HOST
-      fwrite($fp, $port     . "\n"); // PORT
-      fwrite($fp, $user     . "\n"); // USER
-      fwrite($fp, $password . "\n"); // PASSWORD
-      fwrite($fp, $database . "\n"); // DATABASE
-      fclose($fp);    
-      http_response_code(200);
-    }catch(Exception $e){
-      http_response_code(500);
-    }
     
+    $fp = fopen("config/favorite.txt", 'w');
+    fwrite($fp, $host     . "\n"); // HOST
+    fwrite($fp, $port     . "\n"); // PORT
+    fwrite($fp, $user     . "\n"); // USER
+    fwrite($fp, $password . "\n"); // PASSWORD
+    fwrite($fp, $database . "\n"); // DATABASE
+    fclose($fp);    
+    if(!$fp){
+      http_response_code(500);
+    }else{
+      http_response_code(200);
+    }
   }
-
 }
