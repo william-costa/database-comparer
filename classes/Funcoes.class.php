@@ -217,5 +217,29 @@ class Funcoes{
 
     return $retorno;
   }
-
+  public static function getArquivo(){
+    $fp = fopen("config/favorite.txt", 'r');
+    $data['host']     = str_replace("\n","",fgets($fp)); // HOST
+    $data['port']     = str_replace("\n","",fgets($fp)); // PORT
+    $data['user']     = str_replace("\n","",fgets($fp)); // USER
+    $data['password'] = str_replace("\n","",fgets($fp)); // PASSWORD
+    $data['database'] = str_replace("\n","",fgets($fp)); // DATABASE
+    fclose($fp); 
+    echo json_encode($data);
+  }
+  public static function setArquivo($host, $port, $user, $password, $database){
+    
+    $fp = fopen("config/favorite.txt", 'w');
+    fwrite($fp, $host     . "\n"); // HOST
+    fwrite($fp, $port     . "\n"); // PORT
+    fwrite($fp, $user     . "\n"); // USER
+    fwrite($fp, $password . "\n"); // PASSWORD
+    fwrite($fp, $database . "\n"); // DATABASE
+    fclose($fp);    
+    if(!$fp){
+      http_response_code(500);
+    }else{
+      http_response_code(200);
+    }
+  }
 }
