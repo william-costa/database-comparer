@@ -6,7 +6,6 @@
  * @subpackage  Funcoes
  * @name        ClasseFuncoes
  * @version     1.0
- * @copyright   Webart
  * @author      William Costa
  *
  */
@@ -39,12 +38,17 @@ class Funcoes{
 
   //MÉTODO SET DAS INFORMAÇÕES DO BANCO A ENVIADAS POR POST
   public function setBancoA($bd){
-    $this->bancoA = $bd;
+    $this->bancoA = $this->verificarPreset($bd);
   }
 
   //MÉTODO SET DAS INFORMAÇÕES DO BANCO B ENVIADAS POR POST
   public function setBancoB($bd){
-    $this->bancoB = $bd;
+    $this->bancoB = $this->verificarPreset($bd);
+  }
+
+  //MÉTODO RESPONSÁVEL POR VERIFICAR SE UM PRESET FOI DEFINIDO
+  private function verificarPreset($bd){
+    return (isset($bd['preset']) && is_numeric($bd['preset'])) ? Preset::getPreset($bd['preset']) : $bd;
   }
 
   //MÉTODO GET BANCO A RETORNA UM OBJETO CARREGADO COM AS INFORMAÇÕES DO BANCO A

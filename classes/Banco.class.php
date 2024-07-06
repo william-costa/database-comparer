@@ -1,12 +1,11 @@
 <?php
 /**
- * Classe sem métodos nem atributos utilizada para se conectar ao banco de dados
+ * Classe utilizada para se conectar ao banco de dados
  *
  * @package     Classe
  * @subpackage  Banco
  * @name        ClasseBanco
  * @version     1.0
- * @copyright   Webart
  */
 
 

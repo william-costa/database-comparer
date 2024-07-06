@@ -12,4 +12,14 @@ $(document).ready(function(){
     $('input[name="bd2[usuario]"]').val(usuario);
     $('input[name="bd2[senha]"]').val(senha);
   });
+
+
+  $('.preset').on('change', function() {
+    var selectedValue = $(this).val();
+    if(selectedValue == ''){
+      $(this).closest('fieldset').find('input[type="text"], input[type="password"], span').show();
+    }else{
+      $(this).closest('fieldset').find('input[type="text"], input[type="password"], span').hide();
+    }
+});
 });

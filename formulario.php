@@ -12,6 +12,14 @@
  *
  */
 
+ $presets = Preset::getPresets();
+
+ $optionsPresets = '';
+
+ foreach($presets as $key => $value){
+  $optionsPresets .= '<option value="'.$key.'">'.$value['titulo'].'</option>';
+ }
+
  ?>
  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
  <html xmlns="http://www.w3.org/1999/xhtml">
@@ -41,6 +49,10 @@
   fieldset.bd2 .copiarChaves:hover{
     text-decoration: underline;
   }
+
+  select{
+    margin-bottom:10px;
+  }
 </style>
 
 </head>
@@ -50,6 +62,20 @@
 
  <fieldset>
    <legend>Banco A</legend>
+
+   <?php
+
+    if(strlen($optionsPresets)){
+      echo '<select name="bd[preset]" class="preset">
+              <option value="">Nenhum preset</option>
+              '.$optionsPresets.'
+            </select><br>';
+    }
+
+   ?>
+  
+
+
    <input type="text" name="bd[servidor]" placeholder="Servidor" value="localhost"><br>
    <input type="text" name="bd[porta]" placeholder="Porta" value="3306"><br>
    <input type="text" name="bd[usuario]" placeholder="Usuário"><br>
@@ -59,6 +85,18 @@
 
  <fieldset class="bd2">
    <legend>Banco B</legend>
+
+   <?php
+
+    if(strlen($optionsPresets)){
+      echo '<select name="bd2[preset]" class="preset">
+              <option value="">Nenhum preset</option>
+              '.$optionsPresets.'
+            </select><br>';
+    }
+
+   ?>
+
    <span class="copiarChaves" title="Copia os dados de acesso do Banco A para o Banco B">Copiar chaves do Banco A</span>
    <input type="text" name="bd2[servidor]" placeholder="Servidor" value="localhost"><br>
    <input type="text" name="bd2[porta]" placeholder="Porta" value="3306"><br>

@@ -1,0 +1,17 @@
+{
+  "basicAuth":{
+    "ativo":false,
+    "usuario":"",
+    "senha":""
+  },
+  "presets":[
+    {
+      "titulo":"Localhost",
+      "servidor":"127.0.0.1",
+      "usuario":"user",
+      "senha":"pass",
+      "porta":"3306",
+      "banco":"test"
+    }
+  ]
+}
