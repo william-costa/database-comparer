@@ -1,0 +1,9 @@
+<FilesMatch "^(config\.json|config\.example\.json|formulario\.php|resultado\.php|includes\.php|\.gitignore)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+
+RewriteEngine On
+
+RewriteRule ^(\.git|classes) - [F,L]
