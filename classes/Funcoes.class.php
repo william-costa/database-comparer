@@ -37,18 +37,18 @@ class Funcoes{
   private $resultadoColunas = true;
 
   //MÉTODO SET DAS INFORMAÇÕES DO BANCO A ENVIADAS POR POST
-  public function setBancoA($bd){
+  public function setBancoA(&$bd){
     $this->bancoA = $this->verificarPreset($bd);
   }
 
   //MÉTODO SET DAS INFORMAÇÕES DO BANCO B ENVIADAS POR POST
-  public function setBancoB($bd){
+  public function setBancoB(&$bd){
     $this->bancoB = $this->verificarPreset($bd);
   }
 
   //MÉTODO RESPONSÁVEL POR VERIFICAR SE UM PRESET FOI DEFINIDO
-  private function verificarPreset($bd){
-    return (isset($bd['preset']) && is_numeric($bd['preset'])) ? Preset::getPreset($bd['preset']) : $bd;
+  private function verificarPreset(&$bd){
+    return $bd = (isset($bd['preset']) && is_numeric($bd['preset'])) ? Preset::getPreset($bd['preset']) : $bd;
   }
 
   //MÉTODO GET BANCO A RETORNA UM OBJETO CARREGADO COM AS INFORMAÇÕES DO BANCO A
