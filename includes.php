@@ -20,3 +20,5 @@ function __autoload($classe){
 
 Config::init();
 
+BasicAuth::init();
+

@@ -35,7 +35,7 @@ class Config {
    * @return mixed
    */
   public static function get($hash,$defaultValue = null){
-    $xHash = explode('/',trim($hash,'/'));
+    $xHash = explode('.',trim($hash,'.'));
     $configs = self::$configs;
     foreach($xHash as $level){
       if(isset($configs[$level])){
