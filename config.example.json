@@ -1,5 +1,8 @@
 {
   "somentePresets":false,
+  "debug":{
+    "mysqlError":false
+  },
   "basicAuth":{
     "ativo":false,
     "usuario":"",

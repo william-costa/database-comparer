@@ -31,7 +31,11 @@ class Banco {
 
         $this->conexao = new PDO($dsn, $bdconfig['usuario'], $bdconfig['senha'], $options);
       } catch (\PDOException $e) {
-        echo 'Erro de conexão: ' . $e->getMessage();
+        echo 'Erro de conexão: Verifique os dados e tente novamente<br>';
+        if(Config::get('debug.mysqlError',false)){
+          echo $bdconfig['servidor'].': '.$e->getMessage().'<br>';
+        }
+        echo "<br>";
       }
     }
   }

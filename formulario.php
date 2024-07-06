@@ -104,7 +104,10 @@
 
    
  </fieldset>
-<br>
+ <br>
+<label><input type="checkbox" name="compararQuantidadeRegistros"> Comparar quantidade de registros das tabelas</label>
+
+<br><br>
  <button> Comparar >>> </button>
 </form>
 </body>
