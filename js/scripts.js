@@ -17,9 +17,9 @@ $(document).ready(function(){
   $('.preset').on('change', function() {
     var selectedValue = $(this).val();
     if(selectedValue == ''){
-      $(this).closest('fieldset').find('input[type="text"], input[type="password"], span').show();
+      $(this).closest('fieldset').find('input[type="text"], input[type="password"], span, br').show();
     }else{
-      $(this).closest('fieldset').find('input[type="text"], input[type="password"], span').hide();
+      $(this).closest('fieldset').find('input[type="text"], input[type="password"], span, br').hide();
     }
 });
 });
